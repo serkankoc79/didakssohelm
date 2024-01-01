@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: route.openshift.io/v1
 id: {{ .Values.app_name }}
 kind: Route
 metadata:
