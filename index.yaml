@@ -3,6 +3,16 @@ entries:
   didakssochart:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2024-01-01T16:29:05.910834824Z"
+    description: Didak SSO helm chart
+    digest: d3064e7f3c42bd204caaea108c51c40655aaea7edfc660ea9de97af4455003c6
+    name: didakssochart
+    type: application
+    urls:
+    - https://github.com/serkankoc79/didakssohelm/releases/download/didakssochart-0.0.10/didakssochart-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2024-01-01T16:22:47.29278018Z"
     description: Didak SSO helm chart
     digest: 215a40f4c6e369c26650c4fe24311038e14c28abfe870fb10efe07a10e6e4839
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://github.com/serkankoc79/didakssohelm/releases/download/didakssochart-0.0.6/didakssochart-0.0.6.tgz
     version: 0.0.6
-generated: "2024-01-01T16:22:47.292799526Z"
+generated: "2024-01-01T16:29:05.910860873Z"
