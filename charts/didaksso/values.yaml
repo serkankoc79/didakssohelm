@@ -3,6 +3,6 @@
 # Declare variables to be passed into your templates.
 
 app_name: didaksso
-hostname: didaksso-didak-sso.apps.didak5.tbtk.gov.tr
+hostname:
 admin_user_name: admin
 admin_password: admin
