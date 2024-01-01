@@ -1,57 +1,57 @@
-- apiVersion: v1
-  kind: DeploymentConfig
-  metadata:
-    labels:
-      application: {{ .Values.app_name }}
-    name: {{ .Values.app_name }}
-  spec:
-    replicas: 1
-    selector:
-      deploymentConfig: {{ .Values.app_name }}
-    strategy:
-      type: Recreate
-    template:
-      metadata:
-        labels:
-          application: {{ .Values.app_name }}
-          deploymentConfig: {{ .Values.app_name }}
-        name: {{ .Values.app_name }}
-      spec:
-        containers:
-          - env:
-              - name: KEYCLOAK_ADMIN
-                value: {{ .Values.admin_user_name }}
-              - name: KEYCLOAK_ADMIN_PASSWORD
-                value: {{ .Values.admin_password }}
-              - name: KC_PROXY
-                value: 'edge'
-            image: didak-quay.apps.quay.tbtk.gov.tr/serkank/didaksso
-            livenessProbe:
-              failureThreshold: 100
-              httpGet:
-                path: /
-                port: 8080
-                scheme: HTTP
-              initialDelaySeconds: 60
-            name: {{ .Values.app_name }}
-            ports:
-              - containerPort: 8080
-                protocol: TCP
-            readinessProbe:
-              failureThreshold: 300
-              httpGet:
-                path: /
-                port: 8080
-                scheme: HTTP
-              initialDelaySeconds: 30
-            securityContext:
-              privileged: false
-            volumeMounts:
-              - mountPath: /opt/keycloak/data
-                name: empty
-            args: ["start-dev"]
-        volumes:
-          - name: empty
-            emptyDir: {}
-    triggers:
-      - type: ConfigChange
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    application: {{ .Values.app_name }}
+  name: {{ .Values.app_name }}
+spec:
+  replicas: 1
+  selector:
+    deploymentConfig: {{ .Values.app_name }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        application: {{ .Values.app_name }}
+        deploymentConfig: {{ .Values.app_name }}
+      name: {{ .Values.app_name }}
+    spec:
+      containers:
+        - env:
+            - name: KEYCLOAK_ADMIN
+              value: {{ .Values.admin_user_name }}
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: {{ .Values.admin_password }}
+            - name: KC_PROXY
+              value: 'edge'
+          image: didak-quay.apps.quay.tbtk.gov.tr/serkank/didaksso
+          livenessProbe:
+            failureThreshold: 100
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 60
+          name: {{ .Values.app_name }}
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 300
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+          securityContext:
+            privileged: false
+          volumeMounts:
+            - mountPath: /opt/keycloak/data
+              name: empty
+          args: ["start-dev"]
+      volumes:
+        - name: empty
+          emptyDir: {}
+  triggers:
+    - type: ConfigChange
