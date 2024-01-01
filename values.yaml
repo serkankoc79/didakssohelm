@@ -1,0 +1,8 @@
+# Default values for didakssochart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+app_name: didaksso
+hostname: didaksso-didak-sso.apps.didak5.tbtk.gov.tr
+admin_user_name: admin
+admin_password: admin
